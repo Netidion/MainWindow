@@ -13,28 +13,7 @@ class MainWindowTutorialApplication  : public juce::JUCEApplication
 {
 public:
     //==============================================================================
-    class MainWindow : public juce::DocumentWindow 
-    {
-    public:
-        MainWindow(juce::String name) : DocumentWindow(name, juce::Colours::lightblue, DocumentWindow::allButtons)
-        {
-            //centreWithSize(800, 400);
-            setBounds(50, 50, 800, 600);
-            setVisible(true);
-        }
-
-        void closeButtonPressed() override
-        {
-            juce::JUCEApplication::getInstance()->systemRequestedQuit();
-        }
-
-    private:
-        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
-    };
-
-private:
-    std::unique_ptr<MainWindow> mainWindow;
-   // MainWindowTutorialApplication() {}
+    MainWindowTutorialApplication() {} 
 
     const juce::String getApplicationName() override       { return ProjectInfo::projectName; }
     const juce::String getApplicationVersion() override    { return ProjectInfo::versionString; }
@@ -67,6 +46,31 @@ private:
         // this method is invoked, and the commandLine parameter tells you what
         // the other instance's command-line arguments were.
     }
+
+    class MainWindow : public juce::DocumentWindow
+    {
+    public:
+        MainWindow(juce::String name) : DocumentWindow(name, juce::Colours::black, DocumentWindow::allButtons)
+        {
+            //centreWithSize(800, 400);
+            setBounds(50, 50, 800, 600);
+            setVisible(true);
+            //setUsingNativeTitleBar(true);
+            setResizable(true, true);
+        }
+
+        void closeButtonPressed() override
+        {
+            juce::JUCEApplication::getInstance()->systemRequestedQuit();
+        }
+
+    private:
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainWindow)
+    };
+
+private:
+    std::unique_ptr<MainWindow> mainWindow;
+
 };
 
 //==============================================================================
