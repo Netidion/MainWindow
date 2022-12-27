@@ -16,7 +16,7 @@ public:
     class MainWindow : public juce::DocumentWindow 
     {
     public:
-        MainWindow(juce::String name) : DocumentWindow(name, juce::Colours::lightseagreen, DocumentWindow::allButtons)
+        MainWindow(juce::String name) : DocumentWindow(name, juce::Colours::lightblue, DocumentWindow::allButtons)
         {
             //centreWithSize(800, 400);
             setBounds(50, 50, 800, 600);
